@@ -1,272 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mamta Bhojnalaya – Menu</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    /* ─── TOKENS ─────────────────────────────────────── */
-    :root {
-      --saffron:   #F4A836;
-      --turmeric:  #E8861A;
-      --chili:     #C0392B;
-      --cream:     #FFF8EE;
-      --brown:     #3B1F0A;
-      --mud:       #6B3A1F;
-      --leaf:      #2E7D32;
-      --card-bg:   #FFFDF7;
-      --shadow:    0 4px 24px rgba(59,31,10,.12);
-      --radius:    16px;
-    }
-
-    /* ─── RESET ───────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--cream);
-      color: var(--brown);
-      font-family: 'Poppins', sans-serif;
-      overflow-x: hidden;
-    }
-
-    /* ─── DECORATIVE BG PATTERN ──────────────────────── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        radial-gradient(circle at 15% 20%, rgba(244,168,54,.12) 0%, transparent 40%),
-        radial-gradient(circle at 85% 75%, rgba(192,57,43,.10) 0%, transparent 40%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ─── HEADER ──────────────────────────────────────── */
-    header {
-      position: relative;
-      background: linear-gradient(135deg, var(--brown) 0%, #5a2d0c 100%);
-      color: var(--cream);
-      text-align: center;
-      padding: 48px 24px 40px;
-      overflow: hidden;
-    }
-
-    header::after {
-      content: '';
-      position: absolute;
-      bottom: -1px; left: 0; right: 0;
-      height: 40px;
-      background: var(--cream);
-      clip-path: ellipse(55% 100% at 50% 100%);
-    }
-
-    .header-badge {
-      display: inline-block;
-      background: var(--saffron);
-      color: var(--brown);
-      font-size: .7rem;
-      font-weight: 600;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      padding: 4px 16px;
-      border-radius: 999px;
-      margin-bottom: 14px;
-    }
-
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 6vw, 4rem);
-      font-weight: 900;
-      line-height: 1.05;
-      letter-spacing: .02em;
-    }
-
-    header h1 span {
-      color: var(--saffron);
-    }
-
-    .header-sub {
-      margin-top: 10px;
-      font-size: .85rem;
-      font-weight: 300;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      opacity: .75;
-    }
-
-    .wave-divider {
-      margin-top: 18px;
-      font-size: 1.5rem;
-      opacity: .6;
-      letter-spacing: .3em;
-    }
-
-    /* ─── MAIN LAYOUT ─────────────────────────────────── */
-    main {
-      position: relative;
-      z-index: 1;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 48px 20px 64px;
-      display: grid;
-      gap: 32px;
-      grid-template-columns: 1fr;
-    }
-
-    /* ─── SECTION CARD ────────────────────────────────── */
-    .menu-section {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      animation: fadeUp .5s ease both;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .menu-section:nth-child(1) { animation-delay: .05s; }
-    .menu-section:nth-child(2) { animation-delay: .10s; }
-    .menu-section:nth-child(3) { animation-delay: .15s; }
-    .menu-section:nth-child(4) { animation-delay: .20s; }
-    .menu-section:nth-child(5) { animation-delay: .25s; }
-    .menu-section:nth-child(6) { animation-delay: .30s; }
-
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--brown);
-      color: var(--saffron);
-      padding: 14px 22px;
-    }
-
-    .section-header .icon {
-      font-size: 1.3rem;
-    }
-
-    .section-header h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
-
-    /* ─── TABLE ───────────────────────────────────────── */
-    .menu-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .menu-table thead tr {
-      background: rgba(244,168,54,.12);
-    }
-
-    .menu-table th {
-      font-size: .7rem;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--mud);
-      padding: 10px 22px;
-      text-align: right;
-    }
-
-    .menu-table th:first-child {
-      text-align: left;
-    }
-
-    .menu-table td {
-      padding: 11px 22px;
-      font-size: .9rem;
-      text-align: right;
-      border-bottom: 1px solid rgba(59,31,10,.07);
-    }
-
-    .menu-table td:first-child {
-      text-align: left;
-      font-weight: 500;
-      color: var(--brown);
-    }
-
-    .menu-table tbody tr:last-child td {
-      border-bottom: none;
-    }
-
-    .menu-table tbody tr:hover {
-      background: rgba(244,168,54,.06);
-      transition: background .2s;
-    }
-
-    .price {
-      font-weight: 600;
-      color: var(--chili);
-    }
-
-    .price-single {
-      font-weight: 600;
-      color: var(--chili);
-      font-size: .95rem;
-    }
-
-    /* ─── TWO-COLUMN GRID ─────────────────────────────── */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-    }
-
-    /* ─── FOOTER BANNER ───────────────────────────────── */
-    footer {
-      position: relative;
-      z-index: 1;
-      background: var(--brown);
-      color: var(--saffron);
-      text-align: center;
-      padding: 24px 20px;
-    }
-
-    footer p {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1rem, 3vw, 1.4rem);
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    footer small {
-      display: block;
-      margin-top: 6px;
-      font-size: .72rem;
-      letter-spacing: .1em;
-      opacity: .55;
-      text-transform: uppercase;
-    }
-
-    /* ─── RESPONSIVE ──────────────────────────────────── */
-    @media (max-width: 680px) {
-      .grid-2 {
-        grid-template-columns: 1fr;
-      }
-      .menu-table td, .menu-table th {
-        padding: 9px 14px;
-      }
-    }
-  </style>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="icon" href="mamta_favicon.svg">
+  <link rel="stylesheet" href="menustyle.css">
 </head>
+
 <body>
 
   <!-- ══════════ HEADER ══════════ -->
   <header>
-    <div class="header-badge">Pure Veg · Authentic Flavours</div>
+    <div class="header-top">
+      <a href="./index.html" class="home-button">
+        Home </a>
+      <div class="header-badge">Pure Veg · Authentic Flavours</div>
+      <div></div>
+    </div>
     <h1>Mamta <span>Bhojnalaya</span></h1>
     <p class="header-sub">Home-Style Indian Cuisine</p>
-    <div class="wave-divider">〰〰〰</div>
+        <div class="wave-divider">〰〰〰</div>
   </header>
 
   <!-- ══════════ MENU ══════════ -->
@@ -290,11 +48,31 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>Matar Paneer</td>   <td class="price">₹80</td>  <td class="price">₹120</td></tr>
-            <tr><td>Kaju Paneer</td>    <td class="price">₹120</td> <td class="price">₹170</td></tr>
-            <tr><td>Sahi Paneer</td>    <td class="price">₹80</td>  <td class="price">₹120</td></tr>
-            <tr><td>Chola Paneer</td>   <td class="price">₹80</td>  <td class="price">₹120</td></tr>
-            <tr><td>Kaju Kari</td>      <td class="price">₹100</td> <td class="price">₹150</td></tr>
+            <tr>
+              <td>Matar Paneer</td>
+              <td class="price">₹80</td>
+              <td class="price">₹120</td>
+            </tr>
+            <tr>
+              <td>Kaju Paneer</td>
+              <td class="price">₹120</td>
+              <td class="price">₹170</td>
+            </tr>
+            <tr>
+              <td>Sahi Paneer</td>
+              <td class="price">₹80</td>
+              <td class="price">₹120</td>
+            </tr>
+            <tr>
+              <td>Chola Paneer</td>
+              <td class="price">₹80</td>
+              <td class="price">₹120</td>
+            </tr>
+            <tr>
+              <td>Kaju Kari</td>
+              <td class="price">₹100</td>
+              <td class="price">₹150</td>
+            </tr>
           </tbody>
         </table>
       </section>
@@ -314,9 +92,21 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>Dal Fry</td>    <td class="price">₹60</td> <td class="price">₹90</td></tr>
-            <tr><td>Dak Tadka</td>  <td class="price">₹70</td> <td class="price">₹100</td></tr>
-            <tr><td>Dal Paneer</td> <td class="price">₹70</td> <td class="price">₹100</td></tr>
+            <tr>
+              <td>Dal Fry</td>
+              <td class="price">₹60</td>
+              <td class="price">₹90</td>
+            </tr>
+            <tr>
+              <td>Dak Tadka</td>
+              <td class="price">₹70</td>
+              <td class="price">₹100</td>
+            </tr>
+            <tr>
+              <td>Dal Paneer</td>
+              <td class="price">₹70</td>
+              <td class="price">₹100</td>
+            </tr>
           </tbody>
         </table>
       </section>
@@ -338,13 +128,41 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>Sev Masala</td>     <td class="price">₹60</td> <td class="price">₹90</td></tr>
-          <tr><td>Sev Bhaji</td>      <td class="price">₹70</td> <td class="price">₹100</td></tr>
-          <tr><td>Sev Tamatar</td>    <td class="price">₹60</td> <td class="price">₹90</td></tr>
-          <tr><td>Tamatar Masala</td> <td class="price">₹60</td> <td class="price">₹90</td></tr>
-          <tr><td>Tamatar Chatni</td> <td class="price">₹70</td> <td class="price">₹90</td></tr>
-          <tr><td>Khadi Pakoda</td>   <td class="price">₹60</td> <td class="price">₹90</td></tr>
-          <tr><td>Khadi Tadka</td>    <td class="price">₹70</td> <td class="price">₹100</td></tr>
+          <tr>
+            <td>Sev Masala</td>
+            <td class="price">₹60</td>
+            <td class="price">₹90</td>
+          </tr>
+          <tr>
+            <td>Sev Bhaji</td>
+            <td class="price">₹70</td>
+            <td class="price">₹100</td>
+          </tr>
+          <tr>
+            <td>Sev Tamatar</td>
+            <td class="price">₹60</td>
+            <td class="price">₹90</td>
+          </tr>
+          <tr>
+            <td>Tamatar Masala</td>
+            <td class="price">₹60</td>
+            <td class="price">₹90</td>
+          </tr>
+          <tr>
+            <td>Tamatar Chatni</td>
+            <td class="price">₹70</td>
+            <td class="price">₹90</td>
+          </tr>
+          <tr>
+            <td>Khadi Pakoda</td>
+            <td class="price">₹60</td>
+            <td class="price">₹90</td>
+          </tr>
+          <tr>
+            <td>Khadi Tadka</td>
+            <td class="price">₹70</td>
+            <td class="price">₹100</td>
+          </tr>
         </tbody>
       </table>
     </section>
@@ -367,10 +185,26 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>Plain Rice</td>   <td class="price">₹30</td> <td class="price">₹50</td></tr>
-            <tr><td>Jeera Rice</td>   <td class="price">₹40</td> <td class="price">₹60</td></tr>
-            <tr><td>Masala Rice</td>  <td class="price">₹50</td> <td class="price">₹70</td></tr>
-            <tr><td>Lapeta</td>       <td class="price">₹60</td> <td class="price">₹90</td></tr>
+            <tr>
+              <td>Plain Rice</td>
+              <td class="price">₹30</td>
+              <td class="price">₹50</td>
+            </tr>
+            <tr>
+              <td>Jeera Rice</td>
+              <td class="price">₹40</td>
+              <td class="price">₹60</td>
+            </tr>
+            <tr>
+              <td>Masala Rice</td>
+              <td class="price">₹50</td>
+              <td class="price">₹70</td>
+            </tr>
+            <tr>
+              <td>Lapeta</td>
+              <td class="price">₹60</td>
+              <td class="price">₹90</td>
+            </tr>
           </tbody>
         </table>
       </section>
@@ -389,11 +223,26 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>Tawa Roti</td>           <td colspan="2" class="price-single" style="text-align:right">₹6</td></tr>
-            <tr><td>Tawa Butter Roti</td>    <td colspan="2" class="price-single" style="text-align:right">₹8</td></tr>
-            <tr><td>Tandoori Roti</td>       <td colspan="2" class="price-single" style="text-align:right">₹7</td></tr>
-            <tr><td>Tandoori Butter Roti</td><td colspan="2" class="price-single" style="text-align:right">₹8</td></tr>
-            <tr><td>Lachha Paratha</td>      <td colspan="2" class="price-single" style="text-align:right">₹25</td></tr>
+            <tr>
+              <td>Tawa Roti</td>
+              <td colspan="2" class="price-single" style="text-align:right">₹6</td>
+            </tr>
+            <tr>
+              <td>Tawa Butter Roti</td>
+              <td colspan="2" class="price-single" style="text-align:right">₹8</td>
+            </tr>
+            <tr>
+              <td>Tandoori Roti</td>
+              <td colspan="2" class="price-single" style="text-align:right">₹7</td>
+            </tr>
+            <tr>
+              <td>Tandoori Butter Roti</td>
+              <td colspan="2" class="price-single" style="text-align:right">₹8</td>
+            </tr>
+            <tr>
+              <td>Lachha Paratha</td>
+              <td colspan="2" class="price-single" style="text-align:right">₹25</td>
+            </tr>
           </tbody>
         </table>
       </section>
@@ -415,11 +264,28 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>Papad Dry</td>    <td colspan="2" class="price" style="text-align:right">₹20</td></tr>
-          <tr><td>Papad Masala</td> <td colspan="2" class="price" style="text-align:right">₹30</td></tr>
-          <tr><td>Bati</td>         <td colspan="2" class="price" style="text-align:right">₹10</td></tr>
-          <tr><td>Dahi</td>         <td class="price">₹30</td> <td class="price">₹50</td></tr>
-          <tr><td>Water Bottle</td> <td class="price">₹10</td> <td class="price">₹20</td></tr>
+          <tr>
+            <td>Papad Dry</td>
+            <td colspan="2" class="price" style="text-align:right">₹20</td>
+          </tr>
+          <tr>
+            <td>Papad Masala</td>
+            <td colspan="2" class="price" style="text-align:right">₹30</td>
+          </tr>
+          <tr>
+            <td>Bati</td>
+            <td colspan="2" class="price" style="text-align:right">₹10</td>
+          </tr>
+          <tr>
+            <td>Dahi</td>
+            <td class="price">₹30</td>
+            <td class="price">₹50</td>
+          </tr>
+          <tr>
+            <td>Water Bottle</td>
+            <td class="price">₹10</td>
+            <td class="price">₹20</td>
+          </tr>
         </tbody>
       </table>
     </section>
@@ -433,4 +299,5 @@
   </footer>
 
 </body>
+
 </html>
